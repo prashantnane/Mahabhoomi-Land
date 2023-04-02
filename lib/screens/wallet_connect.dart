@@ -27,12 +27,17 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
   bool isDesktop = false;
   double width = 590;
   bool _isObscure = true;
+  double scrWidth = 0.0;
+  double scrHeight = 0.0;
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
   TextEditingController keyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+
+    scrWidth = MediaQuery.of(context).size.width;
+    scrHeight = MediaQuery.of(context).size.height;
     var model = Provider.of<LandRegisterModel>(context);
     var model2 = Provider.of<MetaMaskProvider>(context);
     width = MediaQuery.of(context).size.width;
@@ -56,12 +61,13 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
               ),
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
           if (widget.val == "UserLogin")
-            Text("User Login",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+            Text(
+                "User Login",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ))
           else if (widget.val == "LandInspector")
             Text("Officials Login",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
@@ -89,9 +95,6 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
                   color: Colors.black38,
                   width: 2,
                   height: 400,
-                ),
-                SizedBox(
-                  width: 70,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

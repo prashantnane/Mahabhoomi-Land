@@ -243,6 +243,10 @@ contract Land {
     {
         return lands[id].landPrice;
     }
+    function propertytax(uint id) public view returns(uint)
+    {
+        return lands[id].landPrice*0.20;
+    }
     function makePayment(uint _requestId) public payable
     {
         require(LandRequestMapping[_requestId].buyerId==msg.sender && LandRequestMapping[_requestId].requestStatus==reqStatus.accepted);

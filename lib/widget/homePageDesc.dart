@@ -5,11 +5,21 @@ import 'package:universal_html/html.dart' as html;
 
 import '../constant/utils.dart';
 
-class LeftDescription extends StatelessWidget {
+class LeftDescription extends StatefulWidget {
   const LeftDescription({Key? key}) : super(key: key);
   static final appContainer = kIsWeb
       ? html.window.document.querySelectorAll('flt-glass-pane')[0]
       : null;
+
+  @override
+  State<LeftDescription> createState() => _LeftDescriptionState();
+}
+
+class _LeftDescriptionState extends State<LeftDescription> {
+
+  final ScrollController _scrollController = ScrollController();
+
+  GlobalKey _componentKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +74,16 @@ class LeftDescription extends StatelessWidget {
           children: <Widget>[
             // button
             InkWell(
-              onTap: () {},
+              onTap: () {
+                final context = _componentKey.currentContext;
+                if (context != null) {
+                  _scrollController.animateTo(
+                    context.size?.height ?? 0,
+                    duration: Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                }
+              },
               child: Container(
                   alignment: Alignment.center,
                   width: scrWidth*0.2,
@@ -74,7 +93,7 @@ class LeftDescription extends StatelessWidget {
                         overflow: TextOverflow.fade,
                         style: TextStyle(
                           fontFamily: 'Montserrat',
-                          color: Color(0xffffffff),
+                          color:Colors.white,
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           fontStyle: FontStyle.normal,
@@ -82,7 +101,7 @@ class LeftDescription extends StatelessWidget {
                         )),
                   ),
                   decoration: BoxDecoration(
-                      color: Color(0xFF228B22),
+                      color: customColorScheme.secondary,
                       borderRadius: BorderRadius.circular(scrWidth/20*0.2)
                   )
               ),
@@ -95,10 +114,10 @@ class LeftDescription extends StatelessWidget {
               },
               child: MouseRegion(
                 onHover: (PointerHoverEvent evt) {
-                  appContainer?.style.cursor = 'pointer';
+                  LeftDescription.appContainer?.style.cursor = 'pointer';
                 },
                 onExit: (PointerExitEvent evt) {
-                  appContainer?.style.cursor = 'default';
+                  LeftDescription.appContainer?.style.cursor = 'default';
                 },
                 child: Row(
                   children: [
@@ -108,7 +127,7 @@ class LeftDescription extends StatelessWidget {
                           style: TextStyle(
                             overflow: TextOverflow.ellipsis,
                             fontFamily: 'Montserrat',
-                            color: Color(0xFF228B22),
+                            color: customColorScheme.secondary,
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                             fontStyle: FontStyle.normal,

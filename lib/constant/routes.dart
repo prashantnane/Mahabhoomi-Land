@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:land_registration/screens/github/Scrolltocomponent.dart';
 import 'package:land_registration/screens/land_inspector_dashboard.dart';
 import 'package:land_registration/screens/user_dashboard.dart';
 import 'package:land_registration/screens/addLandInspector.dart';
@@ -20,7 +21,7 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => const home_page(),
+            builder: (_) => home_page(),
             settings: const RouteSettings(name: '/')
         );
       case '/login':

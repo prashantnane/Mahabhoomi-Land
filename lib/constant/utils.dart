@@ -16,6 +16,22 @@ double width = 590;
 bool isDesktop = false;
 String privateKey = "";
 
+ColorScheme customColorScheme = ColorScheme(
+  primary: Color(0xFF2976c5),
+  secondary: Color(0xFF205493),
+  tertiary: Color(0xFF112E51),
+  inversePrimary: Color(0x962d79c7),
+  background: Color(0xFFFFFFFF),
+  surface:Color(0xFF4AA564) ,
+  error: Colors.redAccent,
+  onPrimary: Colors.white,
+  onSecondary: Colors.white,
+  onSurface: Colors.black,
+  onBackground: Colors.black,
+  onError: Colors.white,
+  brightness: Brightness.light,
+);
+
 class LandInfo {
   final String area;
   final String landAddress;
@@ -92,9 +108,13 @@ Widget CustomButton(text, fun) => Container(
       ),
     );
 Widget CustomButton2(text, fun) => Container(
+  // color: Color(0xFF8B4513),
       constraints: const BoxConstraints(maxWidth: 150.0, minHeight: 40.0),
       margin: const EdgeInsets.all(10),
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: customColorScheme.secondary, // foreground
+        ),
         onPressed: fun,
         //color: Theme.of(context).accentColor,
         child: Padding(
@@ -141,8 +161,8 @@ Widget CustomAnimatedContainer(text, fun) => Padding(
           height: 270,
           width: 250,
           decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black54, width: 2),
+              color: customColorScheme.background,
+              border: Border.all(color: Colors.transparent, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(13))),
           child: Center(
               child: Column(
@@ -152,7 +172,7 @@ Widget CustomAnimatedContainer(text, fun) => Padding(
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    'assets/contract_owner_icon.jpg',
+                    'assets/contract_owner_icon.png',
                     width: 110.0,
                     height: 110.0,
                     fit: BoxFit.fill,
@@ -193,7 +213,7 @@ Widget CustomAnimatedContainer(text, fun) => Padding(
           width: 250,
           decoration: BoxDecoration(
               color: Colors.white,
-              border: Border.all(color: Colors.blue, width: 2),
+              border: Border.all(color: Colors.black12, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(20))),
           child: Center(
               child: Column(
@@ -203,7 +223,7 @@ Widget CustomAnimatedContainer(text, fun) => Padding(
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    'assets/contract_owner_icon.jpg',
+                    'assets/contract_owner_icon.png',
                     width: 110.0,
                     height: 110.0,
                     fit: BoxFit.fill,

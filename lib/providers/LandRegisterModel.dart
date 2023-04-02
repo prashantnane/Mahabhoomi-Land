@@ -51,6 +51,7 @@ class LandRegisterModel extends ChangeNotifier {
   late ContractFunction _landCount;
   late ContractFunction _acceptRequest, _rejectRequest;
   late ContractFunction _landPrice;
+  late ContractFunction _propertytax;
   late ContractFunction _makePayment;
   late ContractFunction _paymentDoneList;
   late ContractFunction _transferOwner;
@@ -125,6 +126,7 @@ class LandRegisterModel extends ChangeNotifier {
     _acceptRequest = _contract.function("acceptRequest");
     _rejectRequest = _contract.function("rejectRequest");
     _landPrice = _contract.function("landPrice");
+    _propertytax = _contract.function("propertytax");
     _makePayment = _contract.function("makePayment");
     _paymentDoneList = _contract.function("returnPaymentDoneList");
     _transferOwner = _contract.function("transferOwnership");
@@ -245,6 +247,15 @@ class LandRegisterModel extends ChangeNotifier {
         sender: _ownAddress,
         contract: _contract,
         function: _landPrice,
+        params: [landId]);
+    //print(val);
+    return val[0];
+  }
+  Future<dynamic> propertytax(dynamic landId) async {
+    final val = await _client.call(
+        sender: _ownAddress,
+        contract: _contract,
+        function: _propertytax,
         params: [landId]);
     //print(val);
     return val[0];

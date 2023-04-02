@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:land_registration/widget/footer.dart';
 import 'package:sizer/sizer.dart';
 
 import '../constant/utils.dart';
@@ -19,6 +21,11 @@ class _home_pageState extends State<home_page> {
   double scrWidth =0.0;
   double scrHeight =0.0;
 
+
+  final ScrollController _scrollController = ScrollController();
+
+  GlobalKey _componentKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
 
@@ -34,6 +41,7 @@ class _home_pageState extends State<home_page> {
     if (scrWidth < 600) {
       isDesktop = false;
     }
+
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -76,44 +84,73 @@ class _home_pageState extends State<home_page> {
             //
             // ),
             getMiddleSizedBox(),
-            Padding(
-              padding: EdgeInsets.only(bottom: 30),
+            Card(
+              shape:StadiumBorder()  ,
+              color: Colors.white,
+              child:Icon( Icons.keyboard_arrow_down_outlined, color:customColorScheme.tertiary),
+            ),
+            SizedBox(
               child: Container(
-                width: scrWidth,
-                child: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    '-- Login as --',
-                    style: TextStyle(
-                      fontSize: isDesktop ? 35 : 30,
-                    ),
+                // shape: RoundedRectangleBorder(
+                //   borderRadius: BorderRadius.all(Radius.circular(10)),
+                // ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xFFfafafa), Color(0xFF2976c5)],
                   ),
                 ),
+                child: Column (
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(50),
+                      width: scrWidth,
+                      child:
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Login as',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: isDesktop ? 25 : 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: scrWidth,
+                      padding: EdgeInsets.all(20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomAnimatedContainer('Contract Owner', () {
+                            Navigator.of(context).pushNamed(
+                              '/login',
+                              arguments: "owner",
+                            );
+                          }),
+                          CustomAnimatedContainer('Land Inspector', () {
+                            Navigator.of(context).pushNamed(
+                              '/login',
+                              arguments: "LandInspector",
+                            );
+                          }),
+                          CustomAnimatedContainer('User', () {
+                            Navigator.of(context).pushNamed(
+                              '/login',
+                              arguments: "UserLogin",
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                    FooterWidget(),
+                  ],
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomAnimatedContainer('Contract Owner', () {
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "owner",
-                  );
-                }),
-                CustomAnimatedContainer('Land Inspector', () {
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "LandInspector",
-                  );
-                }),
-                CustomAnimatedContainer('User', () {
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "UserLogin",
-                  );
-                }),
-              ],
-            ),
+            )
+
             // const SizedBox(
             //   height: 100,
             // ),
@@ -128,20 +165,129 @@ class _home_pageState extends State<home_page> {
 
   getMiddleSizedBox() {
     return Container(
+      height:scrHeight-200,
       child: Row(
         children: [
           Container(
             width: scrWidth * 0.5,
             height: scrWidth * 0.5,
-            child:  const LeftDescription(),
+            child:  Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+
+
+                // title
+                const FittedBox(
+                    child:
+                    Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Text(
+                        'MahaBhoomi',
+                        style: TextStyle(
+                          fontFamily: 'AutourOne',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 35,
+                          // letterSpacing: 1.627907,
+                        ),
+                      ),
+
+
+                    )
+
+                ),
+                // Description
+
+                // const SizedBox(
+                //   height,
+                // ),
+                // const SizedBox(height: 26),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+
+                  children: <Widget>[
+                    // button
+                    InkWell(
+                      onTap: () {
+                        final context = _componentKey.currentContext;
+                        if (context != null) {
+                          _scrollController.animateTo(
+                            context.size?.height ?? 0,
+                            duration: Duration(milliseconds: 500),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          width: scrWidth*0.2,
+                          height: 60,
+                          child: Center(
+                            child: Text("Learn More",
+                                overflow: TextOverflow.fade,
+                                style: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  color:Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal,
+                                  letterSpacing: 2,
+                                )),
+                          ),
+                          decoration: BoxDecoration(
+                              color: customColorScheme.secondary,
+                              borderRadius: BorderRadius.circular(scrWidth/20*0.2)
+                          )
+                      ),
+                    ),
+                    //
+                    GestureDetector(
+                      onTap: () {
+                        launchUrl(
+                            "");
+                      },
+                      child: MouseRegion(
+                        onHover: (PointerHoverEvent evt) {
+                          LeftDescription.appContainer?.style.cursor = 'pointer';
+                        },
+                        onExit: (PointerExitEvent evt) {
+                          LeftDescription.appContainer?.style.cursor = 'default';
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(" Terms and Conditions ",
+                                  style: TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontFamily: 'Montserrat',
+                                    color: customColorScheme.secondary,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal,
+                                    letterSpacing: 2,
+                                  )),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                // const SizedBox(
+                //   height: 100,
+                // )
+              ],
+            ),
           ),
           Container(
             width: scrWidth * 0.5,
             height: scrWidth * 0.5,
             child: SvgPicture.asset(
-              'assets/map.svg',
-              color: Color.fromARGB(255, 10, 33, 125),
-                          
+              'assets/farmer.svg',
+
               //color: Color.fromARGB(255, 255, 169, 98),
               height: 20.0,
               width: 20.0,
