@@ -178,22 +178,24 @@ class _RegisterUserState extends State<RegisterUser> {
                       // shrinkWrap: true,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.all(50),
+                          padding: EdgeInsets.only(top: 30, bottom: 20),
                           child: Text(
                             'Registration Screen',
                             style: TextStyle(
-                                fontSize: 30,
+                                fontSize: 20,
+                                fontFamily: 'AutourOne',
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(153, 0, 0, 0)),
                           ),
                         ),
                         Padding(
-                          padding:EdgeInsets.all(10),
+                          padding: EdgeInsets.all(10),
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Name: "),
                                   Flexible(
@@ -206,7 +208,8 @@ class _RegisterUserState extends State<RegisterUser> {
                                             fontSize: 15,
                                           ),
                                           validator: (value) {
-                                            if (value == null || value.isEmpty) {
+                                            if (value == null ||
+                                                value.isEmpty) {
                                               return 'Please enter some text';
                                             }
                                             return null;
@@ -228,35 +231,41 @@ class _RegisterUserState extends State<RegisterUser> {
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Age: "),
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter age';
-                                          }
-                                          return null;
-                                        },
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                        onChanged: (val) {
-                                          age = val;
-                                        },
-                                        keyboardType: TextInputType.number,
-                                        inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp(r'[0-9]'))
-                                        ],
-                                        decoration: const InputDecoration(
-                                          isDense: true, // Added this
-                                          contentPadding: EdgeInsets.all(12),
-                                          border: OutlineInputBorder(),
-                                          labelText: 'Age',
-                                          hintText: 'Enter Age',
+                                      child: Container(
+                                        width: 500,
+                                        child: TextFormField(
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter age';
+                                            }
+                                            return null;
+                                          },
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                          onChanged: (val) {
+                                            age = val;
+                                          },
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: <TextInputFormatter>[
+                                            FilteringTextInputFormatter.allow(
+                                                RegExp(r'[0-9]'))
+                                          ],
+                                          decoration: const InputDecoration(
+                                            isDense: true, // Added this
+                                            contentPadding: EdgeInsets.all(12),
+                                            border: OutlineInputBorder(),
+                                            labelText: 'Age',
+                                            hintText: 'Enter Age',
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -264,6 +273,8 @@ class _RegisterUserState extends State<RegisterUser> {
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Address: "),
                                   Flexible(
@@ -271,43 +282,48 @@ class _RegisterUserState extends State<RegisterUser> {
                                       padding: const EdgeInsets.all(10),
                                       child: CompositedTransformTarget(
                                         link: this._layerLink,
-                                        child: TextFormField(
-                                          validator: (value) {
-                                            if (value == null || value.isEmpty) {
-                                              return 'Please enter some text';
-                                            }
-                                            return null;
-                                          },
-                                          style: const TextStyle(
-                                            fontSize: 15,
-                                          ),
-                        
-                                          controller: addressController,
-                                          onChanged: (value) {
-                                            if (value.isNotEmpty) {
-                                              autocomplete(value);
-                                              _overlayEntry.remove();
-                                              _overlayEntry =
-                                                  this._createOverlayEntry();
-                                              Overlay.of(context)!
-                                                  .insert(_overlayEntry);
-                                            } else {
-                                              if (predictions.length > 0 &&
-                                                  mounted) {
-                                                setState(() {
-                                                  predictions = [];
-                                                });
+                                        child: Container(
+                                          width: 500,
+                                          child: TextFormField(
+                                            validator: (value) {
+                                              if (value == null ||
+                                                  value.isEmpty) {
+                                                return 'Please enter some text';
                                               }
-                                            }
-                                          },
-                                          focusNode: this._focusNode,
-                                          //obscureText: true,
-                                          decoration: const InputDecoration(
-                                            isDense: true, // Added this
-                                            contentPadding: EdgeInsets.all(12),
-                                            border: OutlineInputBorder(),
-                                            labelText: 'Address',
-                                            hintText: 'Enter Address',
+                                              return null;
+                                            },
+                                            style: const TextStyle(
+                                              fontSize: 15,
+                                            ),
+
+                                            controller: addressController,
+                                            onChanged: (value) {
+                                              if (value.isNotEmpty) {
+                                                autocomplete(value);
+                                                _overlayEntry.remove();
+                                                _overlayEntry =
+                                                    this._createOverlayEntry();
+                                                Overlay.of(context)!
+                                                    .insert(_overlayEntry);
+                                              } else {
+                                                if (predictions.length > 0 &&
+                                                    mounted) {
+                                                  setState(() {
+                                                    predictions = [];
+                                                  });
+                                                }
+                                              }
+                                            },
+                                            focusNode: this._focusNode,
+                                            //obscureText: true,
+                                            decoration: const InputDecoration(
+                                              isDense: true, // Added this
+                                              contentPadding:
+                                                  EdgeInsets.all(12),
+                                              border: OutlineInputBorder(),
+                                              labelText: 'Address',
+                                              hintText: 'Enter Address',
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -316,38 +332,44 @@ class _RegisterUserState extends State<RegisterUser> {
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Aadhar: "),
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter Aadhar number';
-                                          } else if (value.length != 12)
-                                            return 'Please enter Valid Aadhar number';
-                                          return null;
-                                        },
-                                        //maxLength: 12,
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                        keyboardType: TextInputType.number,
-                                        inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp(r'[0-9]'))
-                                        ],
-                                        onChanged: (val) {
-                                          aadharNumber = val;
-                                        },
-                                        //obscureText: true,
-                                        decoration: const InputDecoration(
-                                          isDense: true, // Added this
-                                          contentPadding: EdgeInsets.all(12),
-                                          border: OutlineInputBorder(),
-                                          labelText: 'Aadhar',
-                                          hintText: 'Enter Aadhar Number',
+                                      child: Container(
+                                        width: 500,
+                                        child: TextFormField(
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter Aadhar number';
+                                            } else if (value.length != 12)
+                                              return 'Please enter Valid Aadhar number';
+                                            return null;
+                                          },
+                                          //maxLength: 12,
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: <TextInputFormatter>[
+                                            FilteringTextInputFormatter.allow(
+                                                RegExp(r'[0-9]'))
+                                          ],
+                                          onChanged: (val) {
+                                            aadharNumber = val;
+                                          },
+                                          //obscureText: true,
+                                          decoration: const InputDecoration(
+                                            isDense: true, // Added this
+                                            contentPadding: EdgeInsets.all(12),
+                                            border: OutlineInputBorder(),
+                                            labelText: 'Aadhar',
+                                            hintText: 'Enter Aadhar Number',
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -355,34 +377,40 @@ class _RegisterUserState extends State<RegisterUser> {
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Pan: "),
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Please enter Pan Number';
-                                          } else if (value.length != 10)
-                                            return 'Please enter Valid Pan number';
-                                          return null;
-                                        },
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                        //maxLength: 10,
-                        
-                                        onChanged: (val) {
-                                          panNumber = val;
-                                        },
-                                        //obscureText: true,
-                                        decoration: const InputDecoration(
-                                          isDense: true, // Added this
-                                          contentPadding: EdgeInsets.all(12),
-                                          border: OutlineInputBorder(),
-                                          labelText: 'Pan',
-                                          hintText: 'Enter Pan Number',
+                                      child: Container(
+                                        width: 500,
+                                        child: TextFormField(
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Please enter Pan Number';
+                                            } else if (value.length != 10)
+                                              return 'Please enter Valid Pan number';
+                                            return null;
+                                          },
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                          //maxLength: 10,
+
+                                          onChanged: (val) {
+                                            panNumber = val;
+                                          },
+                                          //obscureText: true,
+                                          decoration: const InputDecoration(
+                                            isDense: true, // Added this
+                                            contentPadding: EdgeInsets.all(12),
+                                            border: OutlineInputBorder(),
+                                            labelText: 'Pan',
+                                            hintText: 'Enter Pan Number',
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -403,36 +431,41 @@ class _RegisterUserState extends State<RegisterUser> {
                                 ),
                               ),
                               Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Email: "),
                                   Flexible(
                                     child: Padding(
                                       padding: const EdgeInsets.all(10),
-                                      child: TextFormField(
-                                        validator: (value) {
-                                          RegExp regex = RegExp(
-                                              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-                                              r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-                                              r"{0,253}[a-zA-Z0-9])?)*$");
-                                          if (!regex.hasMatch(value!) ||
-                                              value == null)
-                                            return 'Enter a valid email address';
-                                          else
-                                            return null;
-                                        },
-                                        style: const TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                        onChanged: (val) {
-                                          email = val;
-                                        },
-                                        //obscureText: true,
-                                        decoration: const InputDecoration(
-                                          isDense: true, // Added this
-                                          contentPadding: EdgeInsets.all(12),
-                                          border: OutlineInputBorder(),
-                                          labelText: 'Email',
-                                          hintText: 'Enter Email',
+                                      child: Container(
+                                        width: 500,
+                                        child: TextFormField(
+                                          validator: (value) {
+                                            RegExp regex = RegExp(
+                                                r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+                                                r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+                                                r"{0,253}[a-zA-Z0-9])?)*$");
+                                            if (!regex.hasMatch(value!) ||
+                                                value == null)
+                                              return 'Enter a valid email address';
+                                            else
+                                              return null;
+                                          },
+                                          style: const TextStyle(
+                                            fontSize: 15,
+                                          ),
+                                          onChanged: (val) {
+                                            email = val;
+                                          },
+                                          //obscureText: true,
+                                          decoration: const InputDecoration(
+                                            isDense: true, // Added this
+                                            contentPadding: EdgeInsets.all(12),
+                                            border: OutlineInputBorder(),
+                                            labelText: 'Email',
+                                            hintText: 'Enter Email',
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -462,7 +495,8 @@ class _RegisterUserState extends State<RegisterUser> {
                                                 });
                                                 try {
                                                   SmartDialog.showLoading(
-                                                      msg: "Uploading Document");
+                                                      msg:
+                                                          "Uploading Document");
                                                   bool isFileupload =
                                                       await uploadDocument();
                                                   SmartDialog.dismiss();
@@ -471,7 +505,8 @@ class _RegisterUserState extends State<RegisterUser> {
                                                       await model2.registerUser(
                                                           name,
                                                           age,
-                                                          addressController.text,
+                                                          addressController
+                                                              .text,
                                                           aadharNumber,
                                                           panNumber,
                                                           docUrl,
@@ -480,7 +515,8 @@ class _RegisterUserState extends State<RegisterUser> {
                                                       await model.registerUser(
                                                           name,
                                                           age,
-                                                          addressController.text,
+                                                          addressController
+                                                              .text,
                                                           aadharNumber,
                                                           panNumber,
                                                           docUrl,
@@ -500,12 +536,12 @@ class _RegisterUserState extends State<RegisterUser> {
                                                       backgroundColor:
                                                           Colors.red);
                                                 }
-                        
+
                                                 setState(() {
                                                   isLoading = false;
                                                 });
                                               }
-                        
+
                                               //model.makePaymentTestFun();
                                             }),
                               isLoading
@@ -525,11 +561,8 @@ class _RegisterUserState extends State<RegisterUser> {
             height: scrHeight * 0.10,
             width: scrWidth,
             child: Material(
-              elevation: 10,
-              child: Padding(
-                padding: EdgeInsets.all(0),
-                child: HeaderUserWidget(),
-              ),
+              elevation: 0,
+              child: HeaderUserWidget(),
             ),
           ),
           Positioned(

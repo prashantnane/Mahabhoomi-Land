@@ -391,14 +391,14 @@ class _UserDashBoardState extends State<UserDashBoard> {
                   myLands()
                 else if (screen == 3)
                   landGallery()
-                else if (screen == 7)
+                else if (screen == 6)
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(25),
                       child: receivedRequest(),
                     ),
                   )
-                else if (screen == 6)
+                else if (screen == 7)
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.all(25),
@@ -1411,7 +1411,7 @@ class _UserDashBoardState extends State<UserDashBoard> {
                               icon: menuItems[6].icon,
                               isSelected: screen == 6,
                               onTap: () {
-                                getMySentRequest();
+                                getMyReceivedRequest();
                                 setState(() {
                                   screen = 6;
                                 });
@@ -1442,8 +1442,8 @@ class _UserDashBoardState extends State<UserDashBoard> {
                       if (index == 0) getProfileInfo();
                       if (index == 2) getLandInfo();
                       if (index == 3) getLandGallery();
-                      if (index == 6) getMySentRequest();
-                      if (index == 7) getMyReceivedRequest();
+                      if (index == 6) getMyReceivedRequest();
+                      if (index == 7) getMySentRequest();
                       setState(() {
                         screen = index;
                       });

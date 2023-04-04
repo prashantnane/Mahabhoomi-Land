@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:land_registration/screens/about_page.dart';
 import 'package:land_registration/screens/github/Scrolltocomponent.dart';
 import 'package:land_registration/screens/land_inspector_dashboard.dart';
 import 'package:land_registration/screens/user_dashboard.dart';
@@ -56,6 +57,11 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const LandInspector(),
           settings: const RouteSettings(name: '/landinspector'),
+        );
+      case '/about':
+        return MaterialPageRoute(
+          builder: (_) => AboutPage(),
+          settings: const RouteSettings(name: '/about'),
         );
 
       default:

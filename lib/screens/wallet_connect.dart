@@ -35,7 +35,6 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
 
   @override
   Widget build(BuildContext context) {
-
     scrWidth = MediaQuery.of(context).size.width;
     scrHeight = MediaQuery.of(context).size.height;
     var model = Provider.of<LandRegisterModel>(context);
@@ -53,27 +52,44 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
           Stack(
             children: [
               const Material(
-                elevation: 10,
-                child: Padding(
-                  padding: EdgeInsets.all(0),
-                  child: HeaderWidget(),
-                ),
+                elevation: 0,
+                child: HeaderWidget(),
               ),
             ],
           ),
+          SizedBox(
+            height: 15,
+          ),
           if (widget.val == "UserLogin")
-            Text(
-                "User Login",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                ))
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text("User Login",
+                  style: TextStyle(
+                      color: Color(0xFF333333),
+                      fontFamily: 'AutourOne',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600)),
+            )
           else if (widget.val == "LandInspector")
-            Text("Officials Login",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text("Officials Login",
+                  style: TextStyle(
+                      color: Color(0xFF333333),
+                      fontFamily: 'AutourOne',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600)),
+            )
           else if (widget.val == "owner")
-            Text("Government Login",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text("Government Login",
+                  style: TextStyle(
+                      color: Color(0xFF333333),
+                      fontFamily: 'AutourOne',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600)),
+            ),
           Container(
             //width: 500,
             padding: EdgeInsets.only(top: 50),
@@ -81,20 +97,21 @@ class _CheckPrivateKeyState extends State<CheckPrivateKey> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      '/logo_gom_image.png',
-                      height: 280.0,
-                      width: 520.0,
-                    ),
-                  ],
+                Image.asset(
+                  '/logo_gom_image.png',
+                  height: 280.0,
+                  width: 520.0,
+                ),
+                SizedBox(
+                  width: 20,
                 ),
                 Container(
                   color: Colors.black38,
                   width: 2,
                   height: 400,
+                ),
+                SizedBox(
+                  width: 10,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,

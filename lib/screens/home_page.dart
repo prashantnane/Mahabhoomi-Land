@@ -50,11 +50,8 @@ class _home_pageState extends State<home_page> {
           children: <Widget>[
             // Top Header
             const Material(
-              elevation: 5,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(20.0, 10.0, 50.0, 10.0),
-                child: HeaderWidget(),
-              ),
+              elevation: 0,
+              child: HeaderWidget(),
             ),
 
             // Expanded(

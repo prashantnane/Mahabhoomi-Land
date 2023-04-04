@@ -26,231 +26,254 @@ class HeaderWidget extends StatelessWidget {
       isDesktop = false;
     }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        // logo
-        Padding(
-          padding: const EdgeInsets.only(left: 2.0),
-          child: IconButton(
-            onPressed: () {
-              launchUrl("https://github.com/prajyot-pawar");
-            },
-            iconSize: 100,
-            icon: Image.asset(
-              'assets/logo.png',
-              //color: Colors.black,
-              height: 400,
-              width: 400,
-              fit: BoxFit.fill,
-            ),
+    return Container(
+      // margin: EdgeInsets.symmetric(horizontal: 40),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Colors.blue, Colors.white]),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
           ),
-        ),
-        const Text(
-          'MahaBhoomi',
-          style: TextStyle(
-            fontFamily: 'AutourOne',
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-            // letterSpacing: 1.627907,
-          ),
-        ),
-        // const SizedBox(
-        //   width: width/10, //<-- SEE HERE
-        // ),
-        SingleChildScrollView(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: InkWell(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const CheckPrivateKey(
-                  //               val: "UserLogin",
-                  //             )));
-                  Navigator.of(context).pushNamed(
-                    '/',
-                    arguments: "Home",
-                  );
-                },
-                child: MouseRegion(
-                  onHover: (PointerHoverEvent evt) {
-                    appContainer?.style.cursor = 'pointer';
-                  },
-                  onExit: (PointerExitEvent evt) {
-                    appContainer?.style.cursor = 'default';
-                  },
-                  child: const Text(
-                    'Home',
-                    style: TextStyle(
-                      fontFamily: 'Lato-bold',
-                      color: Color(0xff28313b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 1.627907,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const CheckPrivateKey(
-                  //               val: "UserLogin",
-                  //             )));
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "UserLogin",
-                  );
-                },
-                child: MouseRegion(
-                  onHover: (PointerHoverEvent evt) {
-                    appContainer?.style.cursor = 'pointer';
-                  },
-                  onExit: (PointerExitEvent evt) {
-                    appContainer?.style.cursor = 'default';
-                  },
-                  child: const Text(
-                    'User Login',
-                    style: TextStyle(
-                      fontFamily: 'Lato-bold',
-                      color: Color(0xff28313b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 1.627907,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const CheckPrivateKey(
-                  //               val: "LandInspector",
-                  //             )));
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "LandInspector",
-                  );
-                },
-                child: MouseRegion(
-                  onHover: (PointerHoverEvent evt) {
-                    appContainer?.style.cursor = 'pointer';
-                  },
-                  onExit: (PointerExitEvent evt) {
-                    appContainer?.style.cursor = 'default';
-                  },
-                  child: const Text(
-                    'Officials login',
-                    style: TextStyle(
-                      fontFamily: 'Lato-bold',
-                      color: Color(0xff28313b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 1.627907,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: GestureDetector(
-                onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const CheckPrivateKey(
-                  //               val: "owner",
-                  //             )));
-                  Navigator.of(context).pushNamed(
-                    '/login',
-                    arguments: "owner",
-                  );
-                },
-                child: MouseRegion(
-                  onHover: (PointerHoverEvent evt) {
-                    appContainer?.style.cursor = 'pointer';
-                  },
-                  onExit: (PointerExitEvent evt) {
-                    appContainer?.style.cursor = 'default';
-                  },
-                  child: const Text(
-                    'Govt login',
-                    style: TextStyle(
-                      fontFamily: 'Lato-black',
-                      color: Color(0xff28313b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 1.627907,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: GestureDetector(
-                onTap: () async {
-                  // await Navigator.push(context,
-                  //     MaterialPageRoute(builder: (context) => RegisterUser()));
-                },
-                child: MouseRegion(
-                  onHover: (PointerHoverEvent evt) {
-                    appContainer?.style.cursor = 'pointer';
-                  },
-                  onExit: (PointerExitEvent evt) {
-                    appContainer?.style.cursor = 'default';
-                  },
-                  child: const Text(
-                    'About',
-                    style: TextStyle(
-                      color: Color(0xff28313b),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      letterSpacing: 1.627907,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(14.0),
-              child: IconButton(
-                onPressed: () {
-                  launchUrl("https://github.com/prajyot-pawar");
-                },
-                iconSize: 100,
-                icon: Image.asset(
-                  'gom.jpeg',
-                  //color: Colors.black,
-                  height: 500,
-                  width: 500,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0.0, 6.0),
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 5.0,
             ),
           ]),
-        )
-      ],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          // logo
+          Padding(
+            padding: const EdgeInsets.only(left: 2.0),
+            child: IconButton(
+              onPressed: () {
+                launchUrl("https://github.com/prajyot-pawar");
+              },
+              iconSize: 100,
+              icon: Image.asset(
+                'assets/logo.png',
+                //color: Colors.black,
+                height: 400,
+                width: 400,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          const Text(
+            'MahaBhoomi',
+            style: TextStyle(
+              fontFamily: 'AutourOne',
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              // letterSpacing: 1.627907,
+            ),
+          ),
+          // const SizedBox(
+          //   width: width/10, //<-- SEE HERE
+          // ),
+          SingleChildScrollView(
+            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: InkWell(
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const CheckPrivateKey(
+                    //               val: "UserLogin",
+                    //             )));
+                    Navigator.of(context).pushNamed(
+                      '/',
+                      arguments: "Home",
+                    );
+                  },
+                  child: MouseRegion(
+                    onHover: (PointerHoverEvent evt) {
+                      appContainer?.style.cursor = 'pointer';
+                    },
+                    onExit: (PointerExitEvent evt) {
+                      appContainer?.style.cursor = 'default';
+                    },
+                    child: const Text(
+                      'Home',
+                      style: TextStyle(
+                        fontFamily: 'Lato-bold',
+                        color: Color(0xff28313b),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: 1.627907,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: GestureDetector(
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const CheckPrivateKey(
+                    //               val: "UserLogin",
+                    //             )));
+                    Navigator.of(context).pushNamed(
+                      '/login',
+                      arguments: "UserLogin",
+                    );
+                  },
+                  child: MouseRegion(
+                    onHover: (PointerHoverEvent evt) {
+                      appContainer?.style.cursor = 'pointer';
+                    },
+                    onExit: (PointerExitEvent evt) {
+                      appContainer?.style.cursor = 'default';
+                    },
+                    child: const Text(
+                      'User Login',
+                      style: TextStyle(
+                        fontFamily: 'Lato-bold',
+                        color: Color(0xff28313b),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: 1.627907,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: GestureDetector(
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const CheckPrivateKey(
+                    //               val: "LandInspector",
+                    //             )));
+                    Navigator.of(context).pushNamed(
+                      '/login',
+                      arguments: "LandInspector",
+                    );
+                  },
+                  child: MouseRegion(
+                    onHover: (PointerHoverEvent evt) {
+                      appContainer?.style.cursor = 'pointer';
+                    },
+                    onExit: (PointerExitEvent evt) {
+                      appContainer?.style.cursor = 'default';
+                    },
+                    child: const Text(
+                      'Officials login',
+                      style: TextStyle(
+                        fontFamily: 'Lato-bold',
+                        color: Color(0xff28313b),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: 1.627907,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: GestureDetector(
+                  onTap: () {
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => const CheckPrivateKey(
+                    //               val: "owner",
+                    //             )));
+                    Navigator.of(context).pushNamed(
+                      '/login',
+                      arguments: "owner",
+                    );
+                  },
+                  child: MouseRegion(
+                    onHover: (PointerHoverEvent evt) {
+                      appContainer?.style.cursor = 'pointer';
+                    },
+                    onExit: (PointerExitEvent evt) {
+                      appContainer?.style.cursor = 'default';
+                    },
+                    child: const Text(
+                      'Govt login',
+                      style: TextStyle(
+                        fontFamily: 'Lato-black',
+                        color: Color(0xff28313b),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: 1.627907,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: GestureDetector(
+                  onTap: () async {
+                    // await Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => RegisterUser()));
+                  Navigator.of(context).pushNamed(
+                      '/about',
+                      arguments: "about",
+                    );
+                  },
+                  child: MouseRegion(
+                    onHover: (PointerHoverEvent evt) {
+                      appContainer?.style.cursor = 'pointer';
+                    },
+                    onExit: (PointerExitEvent evt) {
+                      appContainer?.style.cursor = 'default';
+                    },
+                    child: const Text(
+                      'About',
+                      style: TextStyle(
+                        color: Color(0xff28313b),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        letterSpacing: 1.627907,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: IconButton(
+                  onPressed: () {
+                    launchUrl("https://github.com/prajyot-pawar");
+                  },
+                  iconSize: 100,
+                  icon: Image.asset(
+                    'gom-removebg.png',
+                    //color: Colors.black,
+                    height: 500,
+                    width: 500,
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+            ]),
+          )
+        ],
+      ),
     );
   }
 }

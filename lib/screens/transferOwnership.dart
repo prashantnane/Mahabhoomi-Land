@@ -51,6 +51,8 @@ class _transferOwnershipState extends State<transferOwnership> {
   String witnessName = "", witnessAge = "", witnessAddress = "";
   late List<CameraDescription> cameras;
   String documentId = "", docUrl = "";
+  double scrWidth = 0.0;
+  double scrHeight = 0.0;
 
   @override
   Future<void> dispose() async {
@@ -313,6 +315,8 @@ class _transferOwnershipState extends State<transferOwnership> {
 
   @override
   Widget build(BuildContext context) {
+    scrWidth = MediaQuery.of(context).size.width;
+    scrHeight = MediaQuery.of(context).size.height;
     model = Provider.of<LandRegisterModel>(context);
     model2 = Provider.of<MetaMaskProvider>(context);
     if (isFirstTimeLoad) {
@@ -449,7 +453,7 @@ class _transferOwnershipState extends State<transferOwnership> {
 
   Widget takeWitnessInfo() {
     return Container(
-      width: width,
+      width: 800,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -565,7 +569,7 @@ class _transferOwnershipState extends State<transferOwnership> {
     //if (isLoading) return CircularProgressIndicator();
 
     return Container(
-      width: width,
+      width: 800,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -627,12 +631,12 @@ class _transferOwnershipState extends State<transferOwnership> {
               ),
             ),
           ),
-          CustomTextFiled(walletAddres.toString(), 'Wallet Address',60),
-          CustomTextFiled(name.toString(), 'Name',140),
-          CustomTextFiled(age.toString(), 'Age',160),
-          CustomTextFiled(city.toString(), 'City',160),
-          CustomTextFiled(adhar.toString(), 'Aadhar Number',52),
-          CustomTextFiled(pan.toString(), 'Pan',160),
+          CustomTextFiled(walletAddres.toString(), 'Wallet Address', 60),
+          CustomTextFiled(name.toString(), 'Name', 140),
+          CustomTextFiled(age.toString(), 'Age', 160),
+          CustomTextFiled(city.toString(), 'City', 160),
+          CustomTextFiled(adhar.toString(), 'Aadhar Number', 52),
+          CustomTextFiled(pan.toString(), 'Pan', 160),
           TextButton(
             onPressed: () {
               launchUrl(docu.toString());
@@ -642,7 +646,7 @@ class _transferOwnershipState extends State<transferOwnership> {
               style: TextStyle(color: Colors.blue),
             ),
           ),
-          CustomTextFiled(mail.toString(), 'Mail',158),
+          CustomTextFiled(mail.toString(), 'Mail', 158),
         ],
       ),
     );
@@ -653,7 +657,7 @@ class _transferOwnershipState extends State<transferOwnership> {
     //if (isLoading) return CircularProgressIndicator();
 
     return Container(
-      width: width,
+      width: 800,
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -717,12 +721,12 @@ class _transferOwnershipState extends State<transferOwnership> {
               ),
             ),
           ),
-          CustomTextFiled(walletAddres.toString(), 'Wallet Address',60),
-          CustomTextFiled(name.toString(), 'Name',140),
-          CustomTextFiled(age.toString(), 'Age',160),
-          CustomTextFiled(city.toString(), 'City',160),
-          CustomTextFiled(adhar.toString(), 'Adhar Number',52),
-          CustomTextFiled(pan.toString(), 'Pan',160),
+          CustomTextFiled(walletAddres.toString(), 'Wallet Address', 60),
+          CustomTextFiled(name.toString(), 'Name', 140),
+          CustomTextFiled(age.toString(), 'Age', 160),
+          CustomTextFiled(city.toString(), 'City', 160),
+          CustomTextFiled(adhar.toString(), 'Adhar Number', 52),
+          CustomTextFiled(pan.toString(), 'Pan', 160),
           TextButton(
             onPressed: () {
               launchUrl(docu.toString());
@@ -732,7 +736,7 @@ class _transferOwnershipState extends State<transferOwnership> {
               style: TextStyle(color: Colors.blue),
             ),
           ),
-          CustomTextFiled(mail.toString(), 'Mail',158),
+          CustomTextFiled(mail.toString(), 'Mail', 158),
         ],
       ),
     );

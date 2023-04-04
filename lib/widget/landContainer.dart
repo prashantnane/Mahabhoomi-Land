@@ -193,7 +193,7 @@ Widget landWid3(
     Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
-      width: width,
+      width: 800,
       height: 400,
       decoration: BoxDecoration(
           boxShadow: const [
