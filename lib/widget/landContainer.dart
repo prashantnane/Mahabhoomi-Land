@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../constant/constants.dart';
 import '../constant/utils.dart';
 
 Widget landWid(isverified, area, address, price, isForSell, makeforSellFun) =>
@@ -56,15 +57,20 @@ Widget landWid(isverified, area, address, price, isForSell, makeforSellFun) =>
           ),
           Text(
             address,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 15),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
             'Price:' + price,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18),
           ),
+          // Text(
+          //   'Property Tax:' + propertytax(price).toString(),
+          //   style:
+          //       const TextStyle(fontSize: 10, color: Colors.deepOrangeAccent),
+          // ),
           const SizedBox(
             height: 10,
           ),
@@ -73,15 +79,15 @@ Widget landWid(isverified, area, address, price, isForSell, makeforSellFun) =>
             children: [
               isForSell
                   ? MaterialButton(
-                color: Colors.redAccent,
-                onPressed: null,
-                child: const Text('On Sell'),
-              )
+                      color: Colors.redAccent,
+                      onPressed: null,
+                      child: const Text('On Sell'),
+                    )
                   : MaterialButton(
-                color: Colors.redAccent,
-                onPressed: isverified ? makeforSellFun : null,
-                child: const Text('Make it for Sell'),
-              ),
+                      color: Colors.redAccent,
+                      onPressed: isverified ? makeforSellFun : null,
+                      child: const Text('Make it for Sell'),
+                    ),
               MaterialButton(
                 color: Colors.blueAccent,
                 onPressed: () {},
@@ -93,7 +99,7 @@ Widget landWid(isverified, area, address, price, isForSell, makeforSellFun) =>
       ),
     );
 Widget landWid2(isverified, area, address, price, isMyLand, isForSell,
-    sendRequestFun, viewDetailsFun) =>
+        sendRequestFun, viewDetailsFun) =>
     Container(
       padding: const EdgeInsets.all(15),
       width: 400,
@@ -149,15 +155,20 @@ Widget landWid2(isverified, area, address, price, isMyLand, isForSell,
             address,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 15),
           ),
           const SizedBox(
             height: 10,
           ),
           Text(
             'Price:' + price,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18),
           ),
+          // Text(
+          //   'Property Tax:' + propertytax(price).toString(),
+          //   style:
+          //       const TextStyle(fontSize: 15, color: Colors.deepOrangeAccent),
+          // ),
           const SizedBox(
             height: 10,
           ),
@@ -166,17 +177,17 @@ Widget landWid2(isverified, area, address, price, isMyLand, isForSell,
             children: [
               isMyLand
                   ? MaterialButton(
-                color: Colors.redAccent,
-                onPressed: null,
-                child: const Text('Send Request To Buy'),
-              )
+                      color: Colors.redAccent,
+                      onPressed: null,
+                      child: const Text('Send Request To Buy'),
+                    )
                   : MaterialButton(
-                color: Colors.redAccent,
-                onPressed: isForSell ? sendRequestFun : null,
-                child: isForSell
-                    ? Text('Send Request To Buy')
-                    : Text('Not for sell yet'),
-              ),
+                      color: Colors.redAccent,
+                      onPressed: isForSell ? sendRequestFun : null,
+                      child: isForSell
+                          ? Text('Send Request To Buy')
+                          : Text('Not for sell yet'),
+                    ),
               MaterialButton(
                 color: Colors.blueAccent,
                 onPressed: viewDetailsFun,
@@ -188,12 +199,18 @@ Widget landWid2(isverified, area, address, price, isMyLand, isForSell,
       ),
     );
 
+// double propertytax(price) {
+//   double priced = double.parse(price);
+//   double value = priced * rate;
+//   return value;
+// }
+
 Widget landWid3(
-    owneraddress, area, address, price, propertyPID, surveyNumber, docu) =>
+        owneraddress, area, address, price, propertyPID, surveyNumber, docu) =>
     Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
-      width: 800,
+      width: width,
       height: 400,
       decoration: BoxDecoration(
           boxShadow: const [
@@ -247,6 +264,7 @@ Widget landWid3(
             height: 13,
           ),
           textCustom("Price : ", price),
+          // textCustom("Property Tax : ", propertytax(price)),
           const SizedBox(
             height: 13,
           ),
@@ -263,17 +281,15 @@ Widget landWid3(
       ),
     );
 
-Widget textCustom(text1, text2) => Row(
-  children: [
-    Text(
-      text1,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      text2,
-      maxLines: 1,
-      overflow: TextOverflow.ellipsis,
-      style: const TextStyle(fontSize: 20),
-    )
-  ],
-);
+Widget textCustom(text1, text2) => Row(children: [
+      Text(
+        text1,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+      Text(
+        text2,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 20),
+      ),
+    ]);

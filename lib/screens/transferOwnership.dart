@@ -365,18 +365,23 @@ class _transferOwnershipState extends State<transferOwnership> {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      landWid3(
-                        landInfo[9].toString(),
-                        landInfo[1].toString(),
-                        landInfo[2],
-                        landInfo[3].toString(),
-                        landInfo[5].toString(),
-                        landInfo[6].toString(),
-                        landInfo[7].toString(),
+                      SizedBox(
+                        width: scrWidth/3,
+                        child: landWid3(
+                          landInfo[9].toString(),
+                          landInfo[1].toString(),
+                          landInfo[2],
+                          landInfo[3].toString(),
+                          landInfo[5].toString(),
+                          landInfo[6].toString(),
+                          landInfo[7].toString(),
+                        ),
                       ),
-                      takeWitnessInfo()
+                      SizedBox(
+                        width: scrWidth/2,
+                        child: takeWitnessInfo())
                     ],
                   ),
                   const SizedBox(
