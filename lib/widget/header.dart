@@ -52,7 +52,7 @@ class HeaderWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 2.0),
             child: IconButton(
               onPressed: () {
-                launchUrl("https://github.com/prajyot-pawar");
+                launchUrl("https://github.com/Prajyot02/Mahabhoomi.git");
               },
               iconSize: 100,
               icon: Image.asset(
@@ -258,7 +258,7 @@ class HeaderWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(14.0),
                 child: IconButton(
                   onPressed: () {
-                    launchUrl("https://github.com/prajyot-pawar");
+                    launchUrl("https://github.com/Prajyot02/Mahabhoomi.git");
                   },
                   iconSize: 100,
                   icon: Image.asset(
