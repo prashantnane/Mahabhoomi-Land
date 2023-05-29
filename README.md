@@ -29,7 +29,7 @@ This is for demonstration purposes only. With this key, you can log in as Land I
 For user: <pre><b>0xE05820667C420aDa18225D3428666bDc5bFBd737</b></pre>\
 You can also use your own Ethereum wallet key as a user.
 
-#### Check Smart contract At Polygon Mumbai Testnet: [here]([https://rpc-mumbai.maticvigil.com/0x1f346BA99C8e428b7B0bD668114A39A15A2422A3](https://mumbai.polygonscan.com/))
+#### Check Smart contract At Polygon Mumbai Testnet: [here](https://mumbai.polygonscan.com/)
 
 There are two ways to run app on your system :
 A. Using smart contract which is already deployed by us on polygon test-network. 
